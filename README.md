@@ -4,7 +4,7 @@ This repository hosts the official Privacy Policy and Terms & Conditions documen
 
 ## Public Web Access
 You can access the clean, web-ready version of these documents via GitHub Pages:
-👉 **[Open Legal Documents Hub]([index.html](https://yuraldeveloper.github.io/kasiku))**
+👉 **[Open Legal Documents Hub](https://yuraldeveloper.github.io/kasiku)**
 
 ## Document Directory
 
