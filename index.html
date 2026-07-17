@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Documents & Policies</title>
+    <!-- Modern Styling via Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Main Container -->
+    <div class="max-w-2xl mx-auto px-4 py-12 w-full">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Legal Documents</h1>
+            <p class="mt-2 text-sm text-gray-500">Privacy Policy & Terms and Conditions Hub</p>
+        </header>
+
+        <!-- Menu Links -->
+        <main class="space-y-8">
+            <!-- Privacy Policy Card -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    🔒 Privacy Policy
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="PRIVACY_POLICY.md" class="flex-1 text-center py-3 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium rounded-xl transition">
+                        🇺🇸 English Version
+                    </a>
+                    <a href="PRIVACY_POLICY_ID.md" class="flex-1 text-center py-3 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium rounded-xl transition">
+                        🇮🇩 Bahasa Indonesia
+                    </a>
+                </div>
+            </section>
+
+            <!-- Terms & Conditions Card -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    📄 Terms & Conditions
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="TERMS_AND_CONDITIONS.md" class="flex-1 text-center py-3 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium rounded-xl transition">
+                        🇺🇸 English Version
+                    </a>
+                    <a href="TERMS_AND_CONDITIONS_ID.md" class="flex-1 text-center py-3 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium rounded-xl transition">
+                        🇮🇩 Bahasa Indonesia
+                    </a>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-gray-400 border-t border-gray-100 bg-white">
+        <p>&copy; <span id="year"></span> Legal Documents Page. All rights reserved.</p>
+    </footer>
+
+    <!-- Script to dynamically update the year -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
