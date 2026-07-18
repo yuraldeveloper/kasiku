@@ -1,6 +1,6 @@
 # Terms and Conditions
 
-**Last updated: July 16, 2026**
+**Last updated: July 18, 2026**
 
 ## 1. Acceptance of Terms
 
