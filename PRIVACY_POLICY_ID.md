@@ -1,6 +1,6 @@
 # Kebijakan Privasi
 
-**Terakhir diperbarui: 16 Juli 2026**
+**Terakhir diperbarui: 18 Juli 2026**
 
 ## 1. Pendahuluan
 
@@ -51,7 +51,7 @@ Semua informasi yang disimpan di Kasiku digunakan semata-mata untuk menyediakan 
 
 Semua data disimpan secara lokal di perangkat Anda dalam:
 
-- **Database SQLite** (`kasiku.db`) yang terletak di direktori data privat aplikasi
+- **Database SQLite** yang terletak di direktori data privat aplikasi
 - **Shared Preferences** untuk pengaturan key-value ringan
 - **Sistem file lokal** untuk file backup JSON dan dokumen yang diekspor
 
@@ -64,9 +64,9 @@ Semua data disimpan secara lokal di perangkat Anda dalam:
 
 ### 4.3 Penyimpanan Berdasarkan Platform
 
-| Platform | Lokasi Penyimpanan                                                   |
-| -------- | -------------------------------------------------------------------- |
-| Android  | Penyimpanan internal aplikasi (`getApplicationDocumentsDirectory()`) |
+| Platform | Lokasi Penyimpanan            |
+| -------- | ----------------------------- |
+| Android  | Penyimpanan internal aplikasi |
 
 > **Catatan:** Kasiku saat ini tersedia untuk Android. Dukungan untuk platform tambahan (iOS, Web, Windows, Linux, macOS) akan diberikan di pembaruan mendatang. Kebijakan ini akan diperbarui sesuai dengan platform baru yang didukung.
 
