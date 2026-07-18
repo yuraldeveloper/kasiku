@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated: July 16, 2026**
+**Last updated: July 18, 2026**
 
 ## 1. Introduction
 
@@ -51,7 +51,7 @@ All information stored in Kasiku is used solely for the purpose of providing the
 
 All data is stored locally on your device in:
 
-- A **SQLite database** (`kasiku.db`) located in the application's private data directory
+- A **SQLite database** located in the application's private data directory
 - **Shared Preferences** for lightweight key-value settings
 - The **local file system** for backup JSON files and exported documents
 
@@ -64,9 +64,9 @@ All data is stored locally on your device in:
 
 ### 4.3 Platform-Specific Storage
 
-| Platform | Storage Location                                                    |
-| -------- | ------------------------------------------------------------------- |
-| Android  | Application internal storage (`getApplicationDocumentsDirectory()`) |
+| Platform | Storage Location             |
+| -------- | ---------------------------- |
+| Android  | Application internal storage |
 
 > **Note:** Kasiku is currently available for Android. Support for additional platforms (iOS, Web, Windows, Linux, macOS) will be addressed in future updates. This policy will be updated accordingly as new platforms are supported.
 
