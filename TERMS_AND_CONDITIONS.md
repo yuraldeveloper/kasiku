@@ -1,6 +1,6 @@
 # Terms and Conditions
 
-**Last updated: July 18, 2026**
+**Last updated: August 6, 2026**
 
 ## 1. Acceptance of Terms
 
@@ -17,10 +17,10 @@ Kasiku is a personal finance tracking application that allows users to:
 - Organize transactions with customizable categories
 - View financial summaries, charts, and reports
 - Export data to CSV, Excel, and PDF formats
-- Create and restore JSON data backups
+- Create and restore encrypted JSON data backups (optionally protected by a user-chosen PIN)
 - Set recurring reminder notifications
 
-The Application operates **entirely offline** with no cloud synchronization, server infrastructure, or network data transmission.
+**Important:** Your financial data always remains on your own device. Kasiku does not synchronize your data to the cloud or to any Yural Dev server. The Application does, however, display advertisements provided by **Google AdMob** (banner and interstitial), which requires internet connectivity for ad loading; no financial data is transmitted to the ad network.
 
 ## 3. License
 
@@ -52,7 +52,7 @@ You are strongly encouraged to regularly create backups of your data using the A
 
 ### 4.3 Device Security
 
-You are responsible for maintaining the security of your device and any data stored within the Application. The Application does not implement device-level authentication or data encryption.
+You are responsible for maintaining the security of your device and any data stored within the Application. The Application does not implement device-level authentication or encryption of the on-device database. However, backup files created with the Application are encrypted by default (AES-256-GCM), and you may optionally protect them with a 4–6 digit PIN of your choosing. You are solely responsible for safeguarding any PIN you set; if you lose it, PIN-protected backups cannot be recovered.
 
 ### 4.4 Compliance with Laws
 
@@ -70,13 +70,17 @@ Your use of the Application is governed by our Privacy Policy, which is incorpor
 
 ## 7. Third-Party Services
 
-The Application does not integrate with any third-party services, analytics providers, advertising networks, or cloud platforms. The following operating system services are used solely to provide core functionality:
+Kasiku integrates with the following third-party service solely to display advertisements:
+
+- **Google AdMob** — A third-party advertising service by Google that provides the banner and interstitial advertisements shown in the Application. Ad delivery may transmit standard device and usage information (such as your advertising ID, IP address, and device model) to Google for the purpose of serving and measuring ads, in accordance with Google's Privacy Policy and, where required (e.g., in the EEA, UK, and Switzerland), after obtaining your consent through Google's User Messaging Platform. Your financial data is **never** shared with Google or any ad network.
+
+The following operating system services are used solely to provide core functionality:
 
 - **Local notifications**: For scheduling reminder alerts (no data transmitted externally)
 - **File sharing (system share sheet)**: For user-initiated sharing of backup and export files
 - **File picker**: For user-initiated file selection during restore operations
 
-These services operate entirely on your device and do not transmit your data to the Developer or any third party.
+These operating system services operate entirely on your device. The only network communication that occurs is the advertisement delivery described above; your financial data is never transmitted to the Developer or any third party.
 
 ## 8. Disclaimer of Warranties
 
