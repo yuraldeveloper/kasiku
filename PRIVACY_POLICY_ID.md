@@ -1,6 +1,6 @@
 # Kebijakan Privasi
 
-**Terakhir diperbarui: 18 Juli 2026**
+**Terakhir diperbarui: 6 Agustus 2026**
 
 ## 1. Pendahuluan
 
@@ -10,7 +10,7 @@ Dengan menggunakan Kasiku, Anda menyetujui praktik yang dijelaskan dalam Kebijak
 
 ## 2. Informasi yang Kami Kumpulkan
 
-Kasiku dirancang sebagai **aplikasi yang sepenuhnya offline**. Semua data disimpan secara lokal di perangkat Anda. Kami **tidak** mengumpulkan, mentransmisikan, atau menyimpan data apa pun di server eksternal.
+Kasiku dirancang sebagai **aplikasi yang mengutamakan privasi dan penyimpanan lokal**. Semua data keuangan Anda disimpan secara lokal di perangkat Anda. Kami **tidak** mengumpulkan, mentransmisikan, atau menyimpan data keuangan Anda di server eksternal.
 
 ### 2.1 Informasi yang Anda Berikan
 
@@ -24,14 +24,30 @@ Aplikasi menyimpan informasi berikut secara lokal di perangkat Anda:
 | **Kategori**            | Nama kategori kustom, ikon, dan warna untuk mengklasifikasikan transaksi                                                                | Pengkategorian transaksi                         |
 | **Pengingat**           | Jadwal notifikasi termasuk label, waktu, dan hari pengulangan                                                                           | Fitur notifikasi berulang                        |
 | **Preferensi Aplikasi** | Pilihan bahasa, pilihan mata uang, dan preferensi tampilan lainnya                                                                      | Personalisasi pengalaman pengguna                |
+| **PIN Backup**          | PIN yang Anda pilih secara opsional untuk melindungi file backup terenkripsi (hanya digunakan untuk mengenkripsi/mendekripsi file; tidak pernah kami simpan) | Mengamankan file backup Anda        |
 
 ### 2.2 Informasi yang Dikumpulkan Secara Otomatis
 
-Kami **tidak** secara otomatis mengumpulkan analitik, laporan kerusakan, statistik penggunaan, pengidentifikasi perangkat, atau data telemetri lainnya. Aplikasi tidak membuat permintaan jaringan apa pun dan beroperasi sepenuhnya secara offline.
+Kami **tidak** mengumpulkan analitik, laporan kerusakan, statistik penggunaan, atau data telemetri tentang cara Anda menggunakan Aplikasi.
+
+Kasiku menampilkan iklan yang dilayankan oleh **Google AdMob**. Untuk menyajikan iklan, Google Mobile Ads SDK dapat secara otomatis memproses informasi perangkat dan penggunaan standar tertentu, seperti:
+
+- ID iklan (advertising ID) perangkat Anda (dapat diatur ulang melalui pengaturan perangkat)
+- Alamat IP dan data lokasi umum (non-presisi), bila diizinkan oleh pilihan persetujuan Anda
+- Model perangkat, versi sistem operasi, dan pengidentifikasi iklan
+- Interaksi dengan iklan (misalnya, apakah iklan dilihat atau diklik)
+
+Informasi ini dikumpulkan dan diproses oleh **Google**, bukan oleh Yural Dev, dan digunakan untuk menyajikan serta mengukur iklan sesuai dengan Kebijakan Privasi Google. Data keuangan Anda (transaksi, aset, kategori, catatan, dan backup) **tidak pernah** dibagikan kepada Google atau jaringan iklan mana pun.
+
+Di Wilayah Ekonomi Eropa (EEA), Inggris, dan Swiss, Aplikasi menggunakan **User Messaging Platform (UMP)** Google untuk meminta persetujuan Anda sebelum menampilkan iklan yang dipersonalisasi. Anda dapat mengubah atau menarik pilihan persetujuan kapan saja melalui pengaturan perangkat Anda.
+
+Untuk informasi lebih lanjut tentang cara Google menangani data iklan dan cara memilih untuk tidak menerima, silakan tinjau:
+- [Kebijakan Privasi Google](https://policies.google.com/privacy)
+- [Setelan Iklan Google](https://adssettings.google.com)
 
 ### 2.3 Informasi dari Pihak Ketiga
 
-Kami **tidak** terintegrasi dengan layanan analitik, periklanan, media sosial, atau penyimpanan cloud pihak ketiga mana pun. Kasiku tidak menggunakan SDK apa pun yang mengumpulkan atau mentransmisikan data ke pihak ketiga.
+Satu-satunya SDK pihak ketiga yang terintegrasi ke dalam Kasiku adalah **Google Mobile Ads SDK** (AdMob), yang digunakan semata-mata untuk menampilkan iklan banner dan interstitial. Sebagaimana dijelaskan pada Bagian 2.2, SDK ini beroperasi di bawah kebijakan privasi Google sendiri dan tidak menerima data keuangan Anda. Kasiku tidak terintegrasi dengan layanan analitik, media sosial, atau pengumpulan cloud mana pun, dan tidak ada SDK lain yang mengumpulkan atau mentransmisikan data ke pihak ketiga.
 
 ## 3. Bagaimana Kami Menggunakan Informasi Anda
 
@@ -41,28 +57,36 @@ Semua informasi yang disimpan di Kasiku digunakan semata-mata untuk menyediakan 
 - Menghitung dan menampilkan saldo aset
 - Menghasilkan ringkasan keuangan, grafik, dan laporan
 - Menyediakan ekspor data dalam format CSV, Excel, dan PDF
-- Membuat dan memulihkan cadangan (backup) JSON data Anda
+- Membuat dan memulihkan cadangan (backup) JSON terenkripsi data Anda (opsional dilindungi PIN pilihan Anda)
 - Menjadwalkan notifikasi lokal untuk pengingat
 - Menyimpan preferensi bahasa dan mata uang Anda
+- Menampilkan iklan melalui Google AdMob (lihat Bagian 2.2)
 
 ## 4. Penyimpanan dan Keamanan Data
 
 ### 4.1 Lokasi Penyimpanan
 
-Semua data disimpan secara lokal di perangkat Anda dalam:
+Semua data keuangan disimpan secara lokal di perangkat Anda dalam:
 
 - **Database SQLite** yang terletak di direktori data privat aplikasi
 - **Shared Preferences** untuk pengaturan key-value ringan
-- **Sistem file lokal** untuk file backup JSON dan dokumen yang diekspor
+- **Sistem file lokal** untuk file backup dan dokumen yang diekspor
 
 ### 4.2 Keamanan Data
 
-- Data Anda **tidak dienkripsi** saat disimpan di penyimpanan perangkat.
-- Aplikasi **tidak menerapkan autentikasi perangkat** (PIN, kata sandi, atau biometrik) untuk mengakses data.
-- Siapa pun dengan akses fisik ke perangkat Anda yang tidak terkunci mungkin dapat melihat data keuangan Anda.
-- File backup dan ekspor disimpan sebagai file teks biasa di sistem file perangkat Anda.
+- Data Anda di database SQLite Aplikasi **tidak dienkripsi** saat disimpan di penyimpanan perangkat.
+- Aplikasi **tidak menerapkan autentikasi perangkat** (PIN, kata sandi, atau biometrik) untuk membuka aplikasi itu sendiri.
+- Siapa pun dengan akses fisik ke perangkat Anda yang tidak terkunci mungkin dapat melihat data keuangan Anda. Kami menyarankan Anda mengaktifkan keamanan layar kunci perangkat Anda.
+- **File backup dienkripsi secara default** menggunakan algoritma **AES-256-GCM**. Kunci enkripsi diturunkan dari PIN Anda (jika Anda memilihnya) atau rahasia bawaan, menggunakan **PBKDF2-HMAC-SHA256 dengan 100.000 iterasi**.
+- **Perlindungan PIN opsional**: saat membuat backup, Anda dapat memilih PIN 4–6 digit. Backup yang dilindungi PIN hanya dapat dipulihkan dengan memasukkan PIN tersebut; tanpa PIN, isi backup tidak dapat didekripsi. Kami tidak menyimpan PIN Anda di mana pun — jika Anda lupa, backup tidak dapat dipulihkan.
+- Dokumen yang diekspor (CSV, Excel, PDF) dibuat sebagai file teks biasa di sistem file perangkat Anda. Berhati-hatilah saat membagikan atau menyimpannya.
 
-### 4.3 Penyimpanan Berdasarkan Platform
+### 4.3 Penggunaan Jaringan
+
+- Kasiku tidak menjalankan sinkronisasi cloud dan tidak terhubung ke infrastruktur server Yural Dev mana pun.
+- Satu-satunya koneksi jaringan yang dibuat Aplikasi adalah ke jaringan iklan **Google AdMob** untuk memuat dan menampilkan iklan (lihat Bagian 2.2). Tidak ada data keuangan yang dikirim melalui koneksi ini.
+
+### 4.4 Penyimpanan Berdasarkan Platform
 
 | Platform | Lokasi Penyimpanan            |
 | -------- | ----------------------------- |
@@ -74,7 +98,7 @@ Semua data disimpan secara lokal di perangkat Anda dalam:
 
 ### 5.1 Tidak Ada Berbagi dengan Pihak Ketiga
 
-Kasiku **tidak membagikan, menjual, menyewakan, atau mengungkapkan data pribadi Anda kepada pihak ketiga mana pun**. Aplikasi tidak membuat koneksi jaringan dan tidak memiliki infrastruktur server.
+Kasiku **tidak membagikan, menjual, menyewakan, atau mengungkapkan data keuangan Anda kepada pihak ketiga mana pun**. Aplikasi tidak memiliki infrastruktur server, dan data keuangan Anda tidak pernah meninggalkan perangkat Anda — kecuali melalui tindakan yang Anda lakukan sendiri sebagaimana dijelaskan pada Bagian 5.2. Satu-satunya komunikasi jaringan pihak ketiga adalah pemuatan iklan melalui Google AdMob (lihat Bagian 2.2), yang tidak menerima data keuangan Anda.
 
 ### 5.2 Berbagi yang Diprakarsai Pengguna
 
@@ -104,7 +128,7 @@ Anda dapat menghapus data Anda dengan cara berikut:
 
 ### 6.3 Data Backup
 
-File backup yang dibuat melalui Aplikasi tetap berada di perangkat Anda hingga Anda menghapusnya secara manual. Aplikasi menyimpan riwayat backup yang dapat dibersihkan kapan saja.
+File backup yang dibuat oleh Aplikasi dienkripsi (lihat Bagian 4.2) dan tetap berada di perangkat Anda hingga Anda menghapusnya secara manual. Aplikasi menyimpan riwayat backup yang dapat dibersihkan kapan saja.
 
 ## 7. Hak Anda
 
@@ -139,9 +163,19 @@ Data Anda disimpan secara eksklusif di perangkat Anda dan tidak ditransfer linta
 
 Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Perubahan akan diposting di Aplikasi dan/atau di repositori Aplikasi. Tanggal "Terakhir diperbarui" di bagian atas kebijakan ini mencerminkan perubahan terbaru.
 
-Perubahan material akan dikomunikasikan melalui Aplikasi. Penggunaan Aplikasi yang berkelanjutan setelah perubahan merupakan penerimaan kebijakan yang diperbarui.
+Perubahan material akan dikomunikasikan melalui Aplikasi (misalnya, melalui formulir persetujuan yang ditampilkan saat peluncuran pertama). Penggunaan Aplikasi yang berkelanjutan setelah perubahan merupakan penerimaan kebijakan yang diperbarui.
 
-## 11. Hubungi Kami
+## 11. Iklan dan Pilihan Anda
+
+Kasiku gratis untuk digunakan dan didukung oleh iklan yang dilayankan oleh **Google AdMob** (lihat Bagian 2.2 untuk detail tentang data iklan dan persetujuan). Terkait iklan:
+
+- Anda tidak perlu menerima iklan yang dipersonalisasi untuk menggunakan Aplikasi.
+- Anda dapat mengubah atau menarik pilihan persetujuan kapan saja melalui pengaturan perangkat Anda.
+- Anda dapat mengatur ulang ID iklan Android kapan saja di pengaturan perangkat Anda (Setelan → Google → Iklan), yang membatasi kemampuan untuk menautkan iklan ke profil perangkat Anda.
+- Anda dapat mengelola atau memilih untuk tidak menerima iklan yang dipersonalisasi melalui [Setelan Iklan Google](https://adssettings.google.com).
+- Pilihan ini tidak memengaruhi data keuangan lokal Anda dengan cara apa pun.
+
+## 12. Hubungi Kami
 
 Jika Anda memiliki pertanyaan, kekhawatiran, atau permintaan terkait Kebijakan Privasi ini, silakan hubungi kami:
 
@@ -150,4 +184,4 @@ Jika Anda memiliki pertanyaan, kekhawatiran, atau permintaan terkait Kebijakan P
 
 ---
 
-_Kebijakan Privasi ini disusun dengan mengacu pada standar privasi global termasuk General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA), dan Undang-Undang Perlindungan Data Pribadi (UU PDP) Indonesia._
+_Kebijakan Privasi ini disusun dengan mengacu pada standar privasi global termasuk General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA), dan Undang-Undang Perlindungan Data Pribadi (UU PDP) Indonesia, serta persyaratan iklan Google._
