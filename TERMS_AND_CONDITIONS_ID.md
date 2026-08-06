@@ -1,6 +1,6 @@
 # Syarat dan Ketentuan
 
-**Terakhir diperbarui: 18 Juli 2026**
+**Terakhir diperbarui: 6 Agustus 2026**
 
 ## 1. Penerimaan Syarat
 
@@ -17,10 +17,10 @@ Kasiku adalah aplikasi pencatatan keuangan pribadi yang memungkinkan pengguna un
 - Mengatur transaksi dengan kategori yang dapat disesuaikan
 - Melihat ringkasan keuangan, grafik, dan laporan
 - Mengekspor data ke format CSV, Excel, dan PDF
-- Membuat dan memulihkan cadangan (backup) data dalam format JSON
+- Membuat dan memulihkan cadangan (backup) data JSON terenkripsi (opsional dilindungi PIN pilihan Anda)
 - Mengatur notifikasi pengingat berulang
 
-Aplikasi beroperasi **sepenuhnya secara offline** tanpa sinkronisasi cloud, infrastruktur server, atau transmisi data jaringan.
+**Aplikasi** adalah pelacak keuangan yang mengutamakan penyimpanan lokal. Data keuangan Anda selalu tetap berada di perangkat Anda sendiri. Kasiku tidak menyinkronkan data pribadi Anda ke cloud dan tidak terhubung ke infrastruktur server Yural Dev. Namun, Aplikasi menampilkan iklan melalui **Google AdMob** (banner dan interstitial), yang hanya memerlukan koneksi internet untuk pengiriman iklan. Tidak ada data keuangan yang dikirim ke jaringan iklan.
 
 ## 3. Lisensi
 
@@ -52,7 +52,7 @@ Anda sangat dianjurkan untuk secara teratur membuat cadangan data menggunakan fi
 
 ### 4.3 Keamanan Perangkat
 
-Anda bertanggung jawab untuk menjaga keamanan perangkat Anda dan data apa pun yang disimpan di dalam Aplikasi. Aplikasi tidak menerapkan autentikasi tingkat perangkat atau enkripsi data.
+Anda bertanggung jawab untuk menjaga keamanan perangkat Anda dan data apa pun yang disimpan di dalam Aplikasi. Aplikasi tidak menerapkan autentikasi tingkat perangkat atau enkripsi pada database internal perangkat. Namun, file backup yang dibuat melalui Aplikasi dienkripsi secara default (AES-256-GCM), dan Anda dapat secara opsional melindunginya dengan PIN 4–6 digit pilihan Anda. Anda sepenuhnya bertanggung jawab untuk menjaga PIN yang Anda tetapkan; jika Anda lupa, backup yang dilindungi PIN tidak dapat dipulihkan.
 
 ### 4.4 Kepatuhan terhadap Hukum
 
@@ -70,13 +70,17 @@ Penggunaan Aplikasi Anda diatur oleh Kebijakan Privasi kami, yang tergabung dala
 
 ## 7. Layanan Pihak Ketiga
 
-Aplikasi tidak terintegrasi dengan layanan pihak ketiga, penyedia analitik, jaringan periklanan, atau platform cloud mana pun. Layanan sistem operasi berikut digunakan semata-mata untuk menyediakan fungsi inti:
+Kasiku terintegrasi dengan layanan pihak ketiga berikut semata-mata untuk menampilkan iklan:
+
+- **Google AdMob** — Layanan periklanan pihak ketiga oleh Google yang menyediakan iklan banner dan interstitial yang ditampilkan di Aplikasi. Pengiriman iklan dapat mengirimkan informasi perangkat dan penggunaan standar (seperti ID iklan Anda, alamat IP, dan model perangkat) kepada Google untuk tujuan penyajian dan pengukuran iklan, sesuai dengan Kebijakan Privasi Google dan, jika diperlukan (misalnya di EEA, Inggris, dan Swiss), setelah memperoleh persetujuan Anda melalui User Messaging Platform Google. Data keuangan Anda **tidak pernah** dibagikan kepada Google atau jaringan iklan mana pun.
+
+Layanan sistem operasi berikut digunakan semata-mata untuk menyediakan fungsi inti:
 
 - **Notifikasi lokal**: Untuk menjadwalkan pengingat (tidak ada data yang dikirim secara eksternal)
 - **Berbagi file (lembar berbagi sistem)**: Untuk berbagi file backup dan ekspor yang diprakarsai pengguna
 - **Pemilih file**: Untuk pemilihan file yang diprakarsai pengguna selama operasi pemulihan
 
-Layanan-layanan ini beroperasi sepenuhnya di perangkat Anda dan tidak mengirimkan data Anda ke Pengembang atau pihak ketiga mana pun.
+Layanan-layanan sistem operasi ini beroperasi sepenuhnya di perangkat Anda. Satu-satunya komunikasi jaringan yang terjadi adalah pengiriman iklan yang dijelaskan di atas; data keuangan Anda tidak pernah dikirimkan ke Pengembang atau pihak ketiga mana pun.
 
 ## 8. Penyangkalan Jaminan
 
