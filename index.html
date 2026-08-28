@@ -4,63 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal Documents & Policies</title>
-    <!-- Modern Styling via Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- marked.js: converts Markdown -> HTML in the browser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Rendered markdown styling (Tailwind's typography plugin isn't available via CDN build) */
+        #doc-content h1 { font-size: 1.875rem; font-weight: 700; margin: 1.5rem 0 1rem; color: #111827; }
+        #doc-content h2 { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 0.75rem; color: #111827; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.4rem; }
+        #doc-content h3 { font-size: 1.15rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #111827; }
+        #doc-content p { margin: 0.75rem 0; line-height: 1.75; color: #374151; }
+        #doc-content ul, #doc-content ol { margin: 0.75rem 0 0.75rem 1.5rem; color: #374151; }
+        #doc-content li { margin: 0.25rem 0; line-height: 1.6; }
+        #doc-content ul { list-style-type: disc; }
+        #doc-content ol { list-style-type: decimal; }
+        #doc-content a { color: #2563eb; text-decoration: underline; }
+        #doc-content strong { font-weight: 700; color: #111827; }
+        #doc-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        #doc-content th, #doc-content td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; text-align: left; }
+        #doc-content th { background: #f9fafb; font-weight: 600; }
+        #doc-content hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+        #doc-content blockquote { border-left: 4px solid #93c5fd; padding-left: 1rem; margin: 1rem 0; color: #4b5563; font-style: italic; }
+        #doc-content code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.3rem; font-size: 0.85em; }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Main Container -->
     <div class="max-w-2xl mx-auto px-4 py-12 w-full">
-        
-        <!-- Header Section -->
-        <header class="text-center mb-12">
-            <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Legal Documents</h1>
-            <p class="mt-2 text-sm text-gray-500">Privacy Policy & Terms and Conditions Hub</p>
-        </header>
 
-        <!-- Menu Links -->
-        <main class="space-y-8">
-            <!-- Privacy Policy Card -->
-            <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <h2 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                    Privacy Policy
-                </h2>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="PRIVACY_POLICY.html" class="flex-1 text-center py-3 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium rounded-xl transition">
-                        🇺🇸 English Version
-                    </a>
-                    <a href="PRIVACY_POLICY_ID.html" class="flex-1 text-center py-3 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium rounded-xl transition">
-                        🇮🇩 Bahasa Indonesia
-                    </a>
-                </div>
-            </section>
+        <!-- ============ HOME VIEW (menu) ============ -->
+        <div id="home-view">
+            <header class="text-center mb-12">
+                <img src="icon.png" alt="Kasiku Logo" class="w-20 h-20 mx-auto mb-4 rounded-2xl shadow-sm">
+                <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Legal Documents</h1>
+                <p class="mt-2 text-sm text-gray-500">Privacy Policy & Terms and Conditions Hub</p>
+            </header>
 
-            <!-- Terms & Conditions Card -->
-            <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <h2 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                    Terms & Conditions
-                </h2>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="TERMS_AND_CONDITIONS.html" class="flex-1 text-center py-3 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium rounded-xl transition">
-                        🇺🇸 English Version
-                    </a>
-                    <a href="TERMS_AND_CONDITIONS_ID.html" class="flex-1 text-center py-3 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium rounded-xl transition">
-                        🇮🇩 Bahasa Indonesia
-                    </a>
+            <main class="space-y-8">
+                <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Privacy Policy</h2>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="#PRIVACY_POLICY.md" class="doc-link flex-1 text-center py-3 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium rounded-xl transition">
+                            🇺🇸 English Version
+                        </a>
+                        <a href="#PRIVACY_POLICY_ID.md" class="doc-link flex-1 text-center py-3 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium rounded-xl transition">
+                            🇮🇩 Bahasa Indonesia
+                        </a>
+                    </div>
+                </section>
+
+                <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Terms & Conditions</h2>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="#TERMS_AND_CONDITIONS.md" class="doc-link flex-1 text-center py-3 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium rounded-xl transition">
+                            🇺🇸 English Version
+                        </a>
+                        <a href="#TERMS_AND_CONDITIONS_ID.md" class="doc-link flex-1 text-center py-3 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium rounded-xl transition">
+                            🇮🇩 Bahasa Indonesia
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- ============ DOCUMENT VIEW (rendered markdown) ============ -->
+        <div id="doc-view" class="hidden">
+            <a href="#" id="back-link" class="inline-flex items-center gap-1 text-sm text-blue-700 hover:text-blue-900 mb-6">
+                ← Back to Legal Documents
+            </a>
+            <article class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-10">
+                <div id="doc-content" class="text-gray-800">
+                    <p class="text-gray-400">Loading document…</p>
                 </div>
-            </section>
-        </main>
+            </article>
+        </div>
 
     </div>
 
-    <!-- Footer -->
     <footer class="text-center py-6 text-xs text-gray-400 border-t border-gray-100 bg-white">
         <p>&copy; <span id="year"></span> Legal Documents Page. All rights reserved.</p>
     </footer>
 
-    <!-- Script to dynamically update the year -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        const homeView = document.getElementById('home-view');
+        const docView = document.getElementById('doc-view');
+        const docContent = document.getElementById('doc-content');
+
+        function loadDoc(filename) {
+            homeView.classList.add('hidden');
+            docView.classList.remove('hidden');
+            docContent.innerHTML = '<p class="text-gray-400">Loading document…</p>';
+            window.scrollTo(0, 0);
+
+            fetch(filename)
+                .then(res => {
+                    if (!res.ok) throw new Error('File not found');
+                    return res.text();
+                })
+                .then(md => {
+                    document.title = filename.replace('.md', '').replaceAll('_', ' ');
+                    docContent.innerHTML = marked.parse(md);
+                })
+                .catch(err => {
+                    docContent.innerHTML = `<p class="text-red-500">Could not load "${filename}". (${err.message})</p>`;
+                });
+        }
+
+        function showHome() {
+            docView.classList.add('hidden');
+            homeView.classList.remove('hidden');
+            document.title = 'Legal Documents & Policies';
+            window.scrollTo(0, 0);
+        }
+
+        // Route based on the URL hash, e.g. #PRIVACY_POLICY.md
+        function route() {
+            const hash = decodeURIComponent(window.location.hash.slice(1));
+            if (hash && hash.endsWith('.md')) {
+                loadDoc(hash);
+            } else {
+                showHome();
+            }
+        }
+
+        window.addEventListener('hashchange', route);
+        window.addEventListener('DOMContentLoaded', route);
     </script>
 
 </body>
