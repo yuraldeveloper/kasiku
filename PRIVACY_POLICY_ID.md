@@ -1,6 +1,6 @@
 # Kebijakan Privasi
 
-**Terakhir diperbarui: 13 November 2026**
+**Terakhir diperbarui: 25 November 2026**
 
 ## 1. Pendahuluan
 
@@ -27,10 +27,14 @@ Aplikasi menyimpan informasi berikut secara lokal di perangkat Anda:
 | **Preferensi Aplikasi**    | Pilihan bahasa, pilihan mata uang, status onboarding, dan preferensi tampilan lainnya                                                                                    | Personalisasi pengalaman pengguna                                      |
 | **Kunci Aplikasi**         | Hash SHA-256 dari PIN 6 digit, status biometrik, dan waktu verifikasi terakhir                                                                                           | Mengunci akses ke Aplikasi; PIN asli tidak disimpan                     |
 | **PIN Backup**             | PIN 4–6 digit yang Anda pilih secara opsional untuk melindungi file backup terenkripsi (hanya digunakan untuk mengenkripsi/mendekripsi file; tidak pernah kami simpan)   | Mengamankan file backup Anda                                           |
+| **Riwayat Obrolan AI**     | Pertanyaan yang Anda ketik dan jawaban yang dihasilkan asisten, termasuk nama alat baca-saja, ringkasan alat singkat, data grafik, waktu pesan, dan durasi; disimpan dalam file JSON lokal | Melanjutkan sesi obrolan AI                                            |
+| **File Model AI**          | File model AI di perangkat (GGUF) yang diunduh, disimpan di folder dokumen privat aplikasi                                                                             | Menjalankan asisten AI tanpa internet                                  |
+| **Kunci API Cloud AI**     | Kunci API yang Anda tempel untuk penyedia AI cloud, disimpan di keystore platform perangkat (Android Keystore / iOS Keychain); hanya digunakan untuk mengautentikasi permintaan Anda ke penyedia tersebut | Menghubungkan ke backend AI cloud opsional                             |
+| **Preferensi AI**          | Pilihan backend (lokal atau cloud), pemilihan penyedia dan model, URL dasar kustom, dan status persetujuan cloud per penyedia                                              | Menyimpan pengaturan AI Anda antar peluncuran                          |
 
 ### 2.2 Informasi yang Dikumpulkan Secara Otomatis
 
-Kami **tidak** mengumpulkan data analitik penggunaan, laporan kerusakan, statistik penggunaan, atau data telemetri tentang cara Anda menggunakan Aplikasi. Fitur **Analitik** di dalam Aplikasi (skor keuangan, tren, deteksi kebiasaan, dan proyeksi) dihitung secara lokal dari data Anda dan tidak dikirim ke mana pun.
+Kami **tidak** mengumpulkan data analitik penggunaan, laporan kerusakan, statistik penggunaan, atau data telemetri tentang cara Anda menggunakan Aplikasi. Fitur **Analitik** di dalam Aplikasi (skor keuangan, tren, deteksi kebiasaan, dan proyeksi) dan **asisten AI di perangkat** dihitung secara lokal dari data Anda dan tidak dikirim ke mana pun.
 
 Kasiku menampilkan iklan yang dilayankan oleh **Google AdMob**. Untuk menyajikan iklan, Google Mobile Ads SDK dapat secara otomatis memproses informasi perangkat dan penggunaan standar tertentu, seperti:
 
@@ -50,6 +54,18 @@ Untuk informasi lebih lanjut tentang cara Google menangani data iklan dan cara m
 ### 2.3 Informasi dari Pihak Ketiga
 
 Satu-satunya SDK pihak ketiga yang terintegrasi ke dalam Kasiku adalah **Google Mobile Ads SDK** (AdMob), yang digunakan semata-mata untuk menampilkan iklan banner dan interstitial. Sebagaimana dijelaskan pada Bagian 2.2, SDK ini beroperasi di bawah kebijakan privasi Google sendiri dan tidak menerima data keuangan Anda. Kasiku tidak terintegrasi dengan layanan analitik, media sosial, atau pengumpulan cloud mana pun, dan tidak ada SDK lain yang mengumpulkan atau mentransmisikan data ke pihak ketiga.
+
+### 2.4 Penyedia AI Cloud Opsional
+
+Kasiku juga mendukung **backend AI cloud opsional**. Backend ini dinonaktifkan kecuali Anda secara eksplisit mengaturnya: Anda memilih penyedia (endpoint OpenAI-compatible, Anthropic, Google Gemini, atau endpoint HTTPS kustom), menempelkan kunci API Anda sendiri, dan mengonfirmasi dialog persetujuan sebelum permintaan pertama.
+
+Ketika Anda menggunakan backend cloud, hal berikut dikirim melalui HTTPS ke penyedia yang Anda pilih:
+
+- Pertanyaan Anda dan pesan obrolan terbaru
+- Data keuangan yang dikembalikan oleh alat baca-saja asisten untuk pertanyaan tersebut (misalnya total, rincian kategori, saldo, atau transaksi yang cocok)
+- Kunci API Anda, digunakan sebagai header autentikasi
+
+Permintaan ini dibuat langsung dari perangkat Anda ke penyedia. Yural Dev tidak mengoperasikan proxy atau server di antaranya, tidak menerima salinan, dan tidak menyimpan kunci Anda. Penyedia memproses permintaan di bawah **kebijakan privasi dan syaratnya sendiri**, yang mungkin mencakup retensi, pencatatan log, atau transfer lintas batas sesuai dengan praktik penyedia tersebut. Anda dapat menghindari semua ini dengan tetap menggunakan backend **di perangkat** default, yang tidak pernah menggunakan jaringan.
 
 ## 3. Bagaimana Kami Menggunakan Informasi Anda
 
@@ -91,6 +107,7 @@ Semua data keuangan disimpan secara lokal di perangkat Anda dalam:
 
 - Kasiku tidak menjalankan sinkronisasi cloud dan tidak terhubung ke infrastruktur server Yural Dev mana pun.
 - Satu-satunya koneksi jaringan yang dibuat Aplikasi adalah ke jaringan iklan **Google AdMob** untuk memuat dan menampilkan iklan (lihat Bagian 2.2). Tidak ada data keuangan yang dikirim melalui koneksi ini.
+- Jika backend AI cloud diaktifkan, jaringan juga digunakan untuk mengirim permintaan ke penyedia AI cloud (OpenAI-compatible, Anthropic, atau Gemini). Permintaan berisi pertanyaan Anda, pesan obrolan terbaru, dan data keuangan yang dibaca melalui alat baca-saja, serta kunci API Anda sebagai header autentikasi. Data ini meninggalkan perangkat Anda hanya setelah Anda secara eksplisit menyetujui persetujuan penyedia.
 
 ### 4.4 Penyimpanan Berdasarkan Platform
 
@@ -110,7 +127,7 @@ Kasiku **tidak membagikan, menjual, menyewakan, atau mengungkapkan data keuangan
 
 Anda dapat memilih untuk membagikan data Anda melalui fitur-fitur berikut, yang memerlukan tindakan eksplisit Anda:
 
-- **Backup**: Anda dapat membuat file backup JSON dan memilih untuk menyimpan atau membagikannya melalui dialog berbagi sistem. File backup menyertakan data keuangan, preferensi, dan pengaturan keamanan, tetapi tidak menyertakan foto transaksi atau pengingat.
+- **Backup**: Anda dapat membuat file backup JSON dan memilih untuk menyimpan atau membagikannya melalui dialog berbagi sistem. File backup menyertakan data keuangan, preferensi, dan pengaturan keamanan, tetapi **tidak menyertakan foto transaksi, pengingat, file model AI, riwayat obrolan AI, atau kuncinya API cloud AI**.
 - **Ekspor**: Anda dapat mengekspor transaksi sebagai file CSV, Excel, atau PDF, termasuk ringkasan analitik dalam PDF, dan membagikannya melalui dialog berbagi sistem. Foto transaksi tidak ikut diekspor.
 - **Berbagi File**: Saat berbagi, file ditangani oleh lembar berbagi asli perangkat Anda dan tunduk pada praktik privasi aplikasi penerima.
 
@@ -129,12 +146,13 @@ Data Anda tetap berada di perangkat Anda selama Anda tetap menginstal Aplikasi d
 Anda dapat menghapus data Anda dengan cara berikut:
 
 - **Catatan individu**: Hapus transaksi, aset, kategori, atau pengingat individual melalui antarmuka Aplikasi. Menghapus transaksi juga menghapus foto terkait dari penyimpanan Aplikasi.
-- **Hapus semua data**: Copot pemasangan Aplikasi atau hapus data Aplikasi melalui pengaturan perangkat untuk menghapus database, foto transaksi, dan preferensi lokal. File backup atau ekspor yang telah Anda simpan di luar penyimpanan Aplikasi mungkin tetap ada kecuali dihapus secara manual.
+- **AI**: Hapus sesi obrolan AI individual atau semua sesi dari layar Asisten AI, dan hapus model AI yang diunduh dari layar pengaturan AI. Anda juga dapat menghapus kunci API cloud AI dari dialog kunci penyedia; kunci tidak ikut dalam backup.
+- **Hapus semua data**: Copot pemasangan Aplikasi atau hapus data Aplikasi melalui pengaturan perangkat untuk menghapus database, foto transaksi, riwayat obrolan AI, model AI yang diunduh, entri keystore, dan preferensi lokal. File backup atau ekspor yang telah Anda simpan di luar penyimpanan Aplikasi mungkin tetap ada kecuali dihapus secara manual.
 - **File backup**: Hapus file backup secara manual melalui layar Backup & Restore Aplikasi atau melalui pengelola file perangkat Anda.
 
 ### 6.3 Data Backup
 
-File backup yang dibuat oleh Aplikasi dienkripsi (lihat Bagian 4.2) dan tetap berada di perangkat Anda hingga Anda menghapusnya secara manual. Aplikasi menyimpan riwayat backup yang dapat dibersihkan kapan saja. Menghapus riwayat backup juga menghapus file backup terkait dari penyimpanan internal Aplikasi.
+File backup yang dibuat oleh Aplikasi dienkripsi (lihat Bagian 4.2) dan tetap berada di perangkat Anda hingga Anda menghapusnya secara manual. Aplikasi menyimpan riwayat backup yang dapat dibersihkan kapan saja. Menghapus riwayat backup juga menghapus file backup terkait dari penyimpanan internal Aplikasi. **Data AI** (file model yang diunduh, riwayat obrolan, kunci API) **tidak pernah** menjadi bagian dari backup dan tidak akan dipulihkan saat Anda memulihkan backup.
 
 ## 7. Hak Anda
 
