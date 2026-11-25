@@ -1,6 +1,6 @@
 # Syarat dan Ketentuan
 
-**Terakhir diperbarui: 13 November 2026**
+**Terakhir diperbarui: 25 November 2026**
 
 ## 1. Penerimaan Syarat
 
@@ -23,8 +23,9 @@ Kasiku adalah aplikasi pencatatan keuangan pribadi yang memungkinkan pengguna un
 - Mengatur notifikasi pengingat berulang
 - Mengunci aplikasi dengan PIN 6 digit dan/atau biometrik secara opsional
 - Menggunakan antarmuka dalam bahasa Indonesia atau Inggris dengan 6 pilihan mata uang
+- Mengobrol dengan asisten AI opsional yang membaca data Anda melalui alat baca-saja dan menampilkan grafik (di perangkat secara default, atau backend cloud opsional dengan API key Anda sendiri)
 
-**Aplikasi** adalah pelacak keuangan yang mengutamakan penyimpanan lokal. Data keuangan Anda selalu tetap berada di perangkat Anda sendiri. Kasiku tidak menyinkronkan data pribadi Anda ke cloud dan tidak terhubung ke infrastruktur server Yural Dev. Namun, Aplikasi menampilkan iklan melalui **Google AdMob** (banner dan interstitial), yang hanya memerlukan koneksi internet untuk pengiriman iklan dan, bila diperlukan, formulir persetujuan UMP Google. Tidak ada data keuangan yang dikirim ke jaringan iklan.
+**Aplikasi** adalah pelacak keuangan yang mengutamakan penyimpanan lokal. Data keuangan Anda selalu tetap berada di perangkat Anda sendiri. Kasiku tidak menyinkronkan data pribadi Anda ke cloud dan tidak terhubung ke infrastruktur server Yural Dev. Namun, Aplikasi menampilkan iklan melalui **Google AdMob** (banner dan interstitial), yang hanya memerlukan koneksi internet untuk pengiriman iklan dan, bila diperlukan, formulir persetujuan UMP Google. Tidak ada data keuangan yang dikirim ke jaringan iklan. Akses jaringan selain itu terbatas pada pengunduhan model AI di perangkat saat Anda memintanya, dan pengiriman permintaan AI ke penyedia cloud yang **Anda** konfigurasikan dan setujui.
 
 ## 3. Lisensi
 
@@ -69,7 +70,17 @@ Anda sangat dianjurkan untuk secara teratur membuat cadangan data menggunakan fi
 
 Anda setuju untuk menggunakan Aplikasi sesuai dengan semua hukum dan peraturan yang berlaku di yurisdiksi Anda.
 
-## 5. Kekayaan Intelektual
+### 4.5 Asisten AI
+
+Aplikasi menyertai asisten AI opsional yang dapat membaca data keuangan Anda melalui enam alat baca-saja dan menampilkan grafik. Asisten ini **tidak** memiliki akses tulis: tidak dapat menambah, mengedit, atau menghapus transaksi, aset, atau kategori, dan tidak memiliki akses SQL.
+
+- **Backend di perangkat** (default): Semua pemrosesan terjadi secara lokal. Data keuangan tidak pernah meninggalkan perangkat Anda. Asisten menggunakan model GGUF yang didownload melalui `llamadart`.
+- **Backend cloud** (opt-in): Anda dapat mengkonfigurasi penyedia OpenAI-compatible, Anthropic, atau Gemini dengan menyematkan API key Anda dan menyetujui dialog persetujuan. Pertanyaan, pesan obrolan, dan data keuangan yang dibaca melalui alat dikirim ke provider melalui HTTPS. API key disimpan di keystore perangkat dan tidak pernah ditulis ke SQLite, ekspor, atau backup.
+- **Retry dan fallback**: Error cloud sementara (timeout, 429, 5xx) diulang hingga 3 kali dengan jeda singkat. Jika semua upaya gagal, dialog menawarkan Cancel / Coba lagi / Gunakan model di perangkat. Error permanen (400/401/403/404) muncul langsung.
+- **Jaminan tidak ada**: Output asisten dihasilkan oleh model AI dan bukan nasihat keuangan. Hasil mungkin tidak akurat, tidak lengkap, atau berubah seiring waktu. Anda bertanggung jawab untuk memverifikasi keputusan keuangan apapun.
+- **Eksklusi backup**: Riwayat chat, model yang didownload, dan pengaturan AI dikeluarkan dari backup dan pemulihan. API key hidup di keystore platform dan tidak pernah menjadi bagian dari backup.
+
+### 5. Kekayaan Intelektual
 
 Aplikasi, termasuk namun tidak terbatas pada kode, desain, tata letak, grafik, logo, dan antarmuka penggunanya, adalah kekayaan intelektual Yural Dev dan dilindungi oleh hak cipta, merek dagang, dan hukum kekayaan intelektual lainnya yang berlaku.
 
@@ -92,6 +103,7 @@ Layanan sistem operasi berikut digunakan semata-mata untuk menyediakan fungsi in
 - **Kamera dan galeri**: Untuk melampirkan foto transaksi atas tindakan Anda
 - **Berbagi file (lembar berbagi sistem)**: Untuk berbagi file backup dan ekspor yang diprakarsai pengguna
 - **Pemilih file**: Untuk pemilihan file yang diprakarsai pengguna selama operasi pemulihan
+- **Opsional Penyedia AI Cloud**: Penyedia OpenAI-compatible, Anthropic, atau Gemini yang memerlukan API key Anda. Permintaan yang berisi pertanyaan Anda, riwayat obrolan, dan data keuangan yang dibaca melalui alat dikirim ke provider melalui HTTPS dengan API key Anda sebagai header autentikasi. Data meninggalkan perangkat Anda hanya setelah Anda secara eksplisit menyetujui syarat privasi penyedia.
 
 Layanan-layanan sistem operasi ini beroperasi sepenuhnya di perangkat Anda. Satu-satunya komunikasi jaringan yang terjadi adalah pengiriman iklan yang dijelaskan di atas; data keuangan Anda tidak pernah dikirimkan ke Pengembang atau pihak ketiga mana pun.
 
@@ -103,7 +115,7 @@ Layanan-layanan sistem operasi ini beroperasi sepenuhnya di perangkat Anda. Satu
 - **JAMINAN BAHWA APLIKASI AKAN BERJALAN TANPA GANGGUAN, BEBAS DARI KESALAHAN, AMAN, ATAU BEBAS DARI CACAT**
 - **JAMINAN MENGENAI KEAKURATAN, KEANDALAN, ATAU KELENGKAPAN PERHITUNGAN KEUANGAN ATAU LAPORAN YANG DIHASILKAN OLEH APLIKASI**
 
-**ANALITIK, SKOR KEUANGAN, PROYEKSI, DAN INSIGHT ADALAH ESTIMASI INFORMATIF YANG DIHITUNG DARI DATA YANG ANDA MASUKKAN. HASILNYA DAPAT TIDAK AKURAT, TIDAK LENGKAP, ATAU BERUBAH SEIRING WAKTU, DAN BUKAN MERUPAKAN JAMINAN ATAS KONDISI KEUANGAN ANDA DI MASA DEPAN.**
+**ANALITIK, SKOR KEUANGAN, PROYEKSI, DAN INSIGHT ADALAH ESTIMASI INFORMATIF YANG DIHITUNG DARI DATA YANG ANDA MASUKKAN. HASILNYA DAPAT TIDAK AKURAT, TIDAK LENGKAP, ATAU BERUBAH SEIRING WAKTU, DAN BUKAN MERUPAKAN JAMINAN ATAS KONDISI KEUANGAN ANDA DI MASA DEPAN. ASISTEN AI MENGHASILKAN OUTPUT BERDASARKAN PREDIKSI MODEL DAN BACA TOOL; IA TIDAK MELAKUKAN PERHITUNGAN KEUANGAN ATAU MENJAMIN AKURASI HASIL KEUANGAN.**
 
 PENGEMBANG TIDAK MEMBERIKAN NASIHAT KEUANGAN. APLIKASI INI ADALAH ALAT UNTUK MENCATAT DAN MENGORGANISASI INFORMASI KEUANGAN DAN TIDAK BOLEH DIANDALKAN UNTUK MEMBUAT KEPUTUSAN KEUANGAN. ANDA HARUS BERKONSULTASI DENGAN PROFESIONAL KEUANGAN YANG BERKUALIFIKASI UNTUK MENDAPATKAN NASIHAT KEUANGAN.
 
@@ -115,7 +127,7 @@ PENGEMBANG TIDAK MEMBERIKAN NASIHAT KEUANGAN. APLIKASI INI ADALAH ALAT UNTUK MEN
 - **KEHILANGAN DATA, KEHILANGAN KEUNTUNGAN, KEHILANGAN BISNIS, ATAU KEHILANGAN GOODWILL**
 - **KERUGIAN AKIBAT PENGGUNAAN ATAU KETIDAKMAMPUAN ANDA MENGGUNAKAN APLIKASI**
 - **KERUGIAN AKIBAT AKSES TIDAK SAH KE PERANGKAT ATAU DATA ANDA**
-- **KLAIM BERDASARKAN KEAKURATAN ATAU KEANDALAN DATA KEUANGAN YANG DIMASUKKAN ATAU DIHITUNG OLEH APLIKASI, TERMASUK ANALITIK, SKOR, PROYEKSI, DAN INSIGHT**
+- **KLAIM BERDASARKAN KEAKURATAN ATAU KEANDALAN DATA KEUANGAN YANG DIMASUKKAN ATAU DIHITUNG OLEH APLIKASI, TERMASUK ANALITIK, SKOR, PROYEKSI, INSIGHT, DAN OUTPUT ASISTEN AI**
 
 BATASAN INI BERLAKU BAIK KLAIM DIDASARKAN PADA KONTRAK, PERBUATAN MELAWAN HUKUM (TERMASUK KELALAIAN), TANGGUNG JAWAB MUTLAK, ATAU TEORI HUKUM LAINNYA, BAHKAN JIKA PENGEMBANG TELAH DIBERITAHU MENGENAI KEMUNGKINAN KERUGIAN TERSEBUT.
 
